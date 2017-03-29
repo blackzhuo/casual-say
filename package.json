@@ -1,0 +1,58 @@
+{
+  "name": "casual-say",
+  "version": "0.0.1",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "start": "node ./bin/start",
+    "dev": "babel-node ./bin/dev",
+    "webpack": "webpack-dev-server --config ./webpack.config.dev.js",
+    "webpackdev": "node ./webpack-dev-server.js",
+    "watch": "webpack -w -p --progress",
+    "pack": "webpack -p --progress",
+    "build": "babel ./libs -d ./dist",
+    "eslint": "eslint --ext .es6 libs",
+    "precommit": "npm run hook",
+    "prepush": "npm run hook",
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "hook": "echo \"hooks ok\" && exit 0"
+  },
+  "pre-commit": [
+    "eslint"
+  ],
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/blackzhuo/casual-say.git"
+  },
+  "author": "",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/blackzhuo/casual-say/issues"
+  },
+  "homepage": "https://github.com/blackzhuo/casual-say#readme",
+  "dependencies": {
+    "express": "^4.15.2",
+    "koa": "^2.2.0",
+    "lodash": "^4.17.4",
+    "mongoose": "^4.9.2",
+    "socket.io": "^1.7.3"
+  },
+  "devDependencies": {
+    "babel-cli": "^6.24.0",
+    "babel-core": "^6.24.0",
+    "babel-eslint": "^7.2.1",
+    "babel-loader": "^6.4.1",
+    "babel-preset-env": "^1.2.2",
+    "eslint": "^3.18.0",
+    "eslint-config-airbnb": "^14.1.0",
+    "eslint-loader": "^1.7.0",
+    "eslint-plugin-import": "^2.2.0",
+    "eslint-plugin-jsx-a11y": "^4.0.0",
+    "eslint-plugin-react": "^6.10.3",
+    "husky": "^0.13.3",
+    "pre-commit": "^1.2.2",
+    "webpack": "^2.3.2",
+    "webpack-dev-server": "^2.4.2",
+    "webpack-hot-middleware": "^2.17.1"
+  }
+}
