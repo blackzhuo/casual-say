@@ -13,13 +13,12 @@ export default class App extends React.Component {
     constructor(props){
         super(props);
     }
-    
     render(){
         return (
             <Router>
                 <div>
-                    <Route exact path="/" component={Main} />
-                    <Route path="/main" component={Home} />
+                    <Route exact path="/" component={Home} />
+                    <Route path="/main" component={Main} />
                 </div>
             </Router>
         )

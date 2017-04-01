@@ -15,7 +15,8 @@ const assetsPluginInstance = new AssetsPlugin({
 module.exports = {
     // 定义资源入口文件
     entry: {
-        index: ['./index/index.es6']
+        index: ['./index/index.es6'],
+        test: ['./test/index.es6']
     },
     // 定义资源打包文件
     output: {
@@ -31,6 +32,13 @@ module.exports = {
     // },
     module: {
         rules: [{
+            // css scss loader
+            test: /\.scss$/,
+            use: ExtractTextPlugin.extract({
+                fallback: 'style-loader',
+                use: ['css-loader', 'sass-loader']
+            })
+        }, {
             // js文件 babel-loader 转换es6 react
             test: /\.es6$/,
             exclude: /(node_modules)/,
@@ -56,13 +64,6 @@ module.exports = {
                     failOnError: true
                 }
             }
-        }, {
-            // css scss loader
-            test: /\.scss$/,
-            use: ExtractTextPlugin.extract({
-                fallback: 'style-loader',
-                use: ['css-loader', 'sass-loader']
-            })
         }, {
             // image loader
             test: /\.(jpe?g|png|gif|svg)$/i,
