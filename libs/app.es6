@@ -13,8 +13,8 @@ io.set('heartbeat interval', 60000);
 io.set('heartbeat timeout', 5000);
 
 io.on('connection', (socket) => {
-  socket.on('chat message', (msg) => {
-    io.emit('chat message', msg);
+  socket.on('chat message', (data) => {
+    io.emit('chat message', data);
   });
 });
 

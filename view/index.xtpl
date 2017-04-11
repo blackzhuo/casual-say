@@ -5,7 +5,9 @@
 {{/block}}
 
 {{#block ("body")}}
-	<div id="root"></div>
+	<div id="root">
+		<div class="loading"></div>
+	</div>
 {{/block}}
 
 {{#block ("script")}}

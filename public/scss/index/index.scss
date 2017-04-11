@@ -49,12 +49,12 @@ ul {
 /* Login Page */
 
 .login.page {
-  background-color: #000;
+  background-color: #fff;
 }
 
 .login.page .form {
   height: 100px;
-  margin-top: -100px;
+  margin-top: -150px;
   position: absolute;
 
   text-align: center;
@@ -65,7 +65,7 @@ ul {
 .login.page .form .usernameInput {
   background-color: transparent;
   border: none;
-  border-bottom: 2px solid #fff;
+  border-bottom: 2px solid #000;
   outline: none;
   padding-bottom: 15px;
   text-align: center;
@@ -82,10 +82,17 @@ ul {
 }
 
 .login.page .title, .login.page .usernameInput {
-  color: #fff;
+  color: #000;
   font-weight: 100;
 }
-
+.login.page .btn{
+  display: block;
+  color: #000;
+  font-size: 200%;
+  font-weight: 200;
+  margin: 60px 0;
+  text-decoration: none;
+}
 /* Chat page */
 
 .chat.page {
@@ -137,7 +144,6 @@ ul {
 /* Input */
 
 .inputMessage {
-  border: 10px solid #000;
   bottom: 0;
   height: 60px;
   left: 0;
@@ -145,5 +151,36 @@ ul {
   padding-left: 10px;
   position: absolute;
   right: 0;
-  width: 100%;
+  width: 80%;
+}
+
+.messageSend{
+  bottom: 0;
+    height: 60px;
+    line-height: 60px;
+    right: 2%;
+    outline: none;
+    position: absolute;
+    width: 15%;
+    text-align: center;
+    text-decoration: none;
+    color: #909090;
+    border: 1px solid #909090;
+}
+
+.loading{
+  position: absolute;
+  top: 0px;
+  right: 0px;
+  bottom: 0px;
+  left: 0px;
+  display: block;
+  animation: loading 10s ease infinite;
+  background-image: linear-gradient(125deg,#fff,#f3f3f3 41%,#ededed 0,#fff);
+  background-size: 300% 300%;
+}
+@keyframes loading{
+  0%{background-position:0 50%}
+  50%{background-position:100% 50%}
+  to{background-position:0 50%}
 }

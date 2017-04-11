@@ -9,7 +9,7 @@ const assetsPluginInstance = new AssetsPlugin({
     processOutput: function(assets) {
         for(let i in assets){
             for(let j in assets[i]){
-                assets[i][j] = `http://127.0.0.1:8111${assets[i][j]}`;
+                assets[i][j] = `http://127.0.0.1:8111${assets[i][j]}?_=${+new Date()}`;
             }
         }
         return JSON.stringify(assets)

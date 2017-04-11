@@ -10,9 +10,9 @@
 <body>
 
     {{include ("./header")}}
-        <article class="main">
-            {{{block ("body")}}}
-        </article>
+    <article class="main">
+        {{{block ("body")}}}
+    </article>
     {{include ("./footer")}}
 
     {{{block ("script")}}}

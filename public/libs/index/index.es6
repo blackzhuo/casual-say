@@ -5,10 +5,10 @@ import { render } from 'react-dom'
 import { createStore, combineReducers } from 'redux'
 import { Provider } from 'react-redux'
 import App from './container/App.es6'
-import reducer from './reducers/index.es6'
+import chatMessageReducer from './reducers/index.es6'
 
 const totalReducer = combineReducers({
-  reducer
+  chatMessageReducer
 });
 
 const store = createStore(totalReducer);
