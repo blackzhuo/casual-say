@@ -9,7 +9,7 @@ class MainApp extends React.Component {
 		super(props);
 	}
 	componentDidMount() {
-		this.SOCKET = io('http://localhost:3000',{'force new connection': true});
+		this.SOCKET = io('http://23.106.136.124:3000',{'force new connection': true});
 		
 		let { userName, theme, headImg } = this.props;
 		let content = document.getElementById('postContent');
