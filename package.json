@@ -11,6 +11,7 @@
     "watch": "webpack -w --progress",
     "pack": "webpack -p --progress",
     "build": "babel ./libs -d ./dist",
+    "prod": "npm run pack && npm run build",
     "eslint": "eslint --ext .es6 libs",
     "precommit": "npm run hook",
     "prepush": "npm run hook",

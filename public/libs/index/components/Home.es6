@@ -4,8 +4,7 @@ import {
   Link
 } from 'react-router-dom'
 import { connect } from 'react-redux';
-import { SOCKET } from '../constant/index.es6';
-import { createChatMessage, createUserName, sendMsg } from '../actions/index.es6';
+import { createUserName, createTheme, createHeadImg } from '../actions/index.es6';
 
 @autobind
 class HomeApp extends React.Component {
@@ -15,37 +14,30 @@ class HomeApp extends React.Component {
     sendHandler(){
         let userName = this.refs.usernameInput.value;
         this.props.createUserName(userName);
-        sendMsg({
-			sort: 1,
-			name: userName,
-			msg: ''
-		});
+        this.props.createTheme(Math.random() * 4 >>> 0);
+        this.props.createHeadImg(Math.random() * 10 >>> 0);
     }
     render(){
         return (
-            <ul className="pages">
-                <li ref="loginPage" className="login page">
-                    <div className="form">
-                        <h3 className="title">Please input your nickname.</h3>
-                        <input ref="usernameInput" className="usernameInput" type="text"></input>
-                        <Link className="btn" to="/main" onClick={this.sendHandler}>Login</Link>
-                    </div>
-                </li>
-            </ul>
+            <div className="home">
+                <h3 className="des">Please input your nickname.</h3>
+                <input ref="usernameInput" className="username" type="text"></input>
+                <Link className="login" to="/main" onClick={this.sendHandler}>Login</Link>
+            </div>
         );
     }
 }
 
 function mapStateToProps(state) {
   return {
-    chatMessage: state.chatMessageReducer.chatMessage
   }
 }
 
 function mapDispatchToProps(dispatch) {
   return {
-    send: (data) => dispatch(createChatMessage(data)),
-    createUserName: (data) => dispatch(createUserName(data))
+    createUserName: (data) => dispatch(createUserName(data)),
+    createTheme: (data) => dispatch(createTheme(data)),
+    createHeadImg: (data) => dispatch(createHeadImg(data))
   }
 }
 

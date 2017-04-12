@@ -1,3 +1,12 @@
-<header>
-    
-</header>
+<section class="hero is-primary header">
+  <div class="hero-body">
+    <div class="container">
+      <h1 class="title">
+        casual-say
+      </h1>
+      <h2 class="subtitle">
+        Say what you want to say.
+      </h2>
+    </div>
+  </div>
+</section>

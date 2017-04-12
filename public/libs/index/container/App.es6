@@ -17,7 +17,7 @@ class ChatApp extends React.Component {
     render(){
         return (
             <Router>
-                <div>
+                <div className="router-container">
                     <Route exact path="/" component={Home} />
                     <Route path="/main" component={Main} />
                 </div>

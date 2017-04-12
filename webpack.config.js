@@ -16,7 +16,7 @@ module.exports = {
     // 定义资源入口文件
     entry: {
         index: ['./index/index.es6'],
-        test: ['./test/index.es6']
+        notfound: ['./notfound/index.es6']
     },
     // 定义资源打包文件
     output: {

@@ -9,14 +9,8 @@ const app = new koa();
 const http = require('http').Server(app.callback());
 const io = require('socket.io')(http);
 
-io.set('heartbeat interval', 60000);
-io.set('heartbeat timeout', 5000);
-
-io.on('connection', (socket) => {
-  socket.on('chat message', (data) => {
-    io.emit('chat message', data);
-  });
-});
+const ioHandler = require('./main/io/index.es6');
+ioHandler.index(io);
 
 const staticHash = require('./staticHash/index.es6');
 const hashPath = path.resolve(__dirname, '..', 'hash/assets.json');
