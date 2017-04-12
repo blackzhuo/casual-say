@@ -37,6 +37,6 @@ jspm_packages
 # Optional REPL history
 .node_repl_history
 
-public/dist
-logs
-dist
+# public/dist
+# logs
+# dist
