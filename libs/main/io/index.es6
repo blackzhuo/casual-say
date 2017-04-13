@@ -24,6 +24,7 @@ module.exports.index = function (io) {
             data.socket = socket;
             loginUser.push(data);
             
+            io.emit('chat initial', totalMessage);
             io.emit('chat message', {
                 sort: 1,
                 name: data.userName,
@@ -32,7 +33,6 @@ module.exports.index = function (io) {
                 headImg: 0,
                 date: new Date()
             });
-            io.emit('chat initial', totalMessage);
             sendLog(io, `There are ${loginUser.length} users.`);
         });
 
