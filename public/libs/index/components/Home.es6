@@ -10,9 +10,22 @@ import { createUserName, createTheme, createHeadImg } from '../actions/index.es6
 class HomeApp extends React.Component {
     constructor(props){
         super(props);
+        this.state = {
+            warnClass: ''
+        }
     }
-    sendHandler(){
+    sendHandler(e){
         let userName = this.refs.usernameInput.value;
+        if(!userName){
+            e.preventDefault();
+            e.stopPropagation();
+            this.setState({
+                warnClass: 'username-warn'
+            });
+            return false;
+        }
+        // TODO 如果重名，也不许登录
+        
         this.props.createUserName(userName);
         this.props.createTheme(Math.random() * 4 >>> 0);
         this.props.createHeadImg(Math.random() * 10 >>> 0);
@@ -21,7 +34,9 @@ class HomeApp extends React.Component {
         return (
             <div className="home">
                 <h3 className="des">Please input your nickname.</h3>
-                <input ref="usernameInput" className="username" type="text"></input>
+                <form onSubmit={this.sendHandler}>
+                    <input ref="usernameInput" className={"username " + this.state.warnClass } type="search" placeholder="nickname"></input>
+                </form>
                 <Link className="login" to="/main" onClick={this.sendHandler}>Login</Link>
             </div>
         );

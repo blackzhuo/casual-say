@@ -14,11 +14,15 @@ class ChatApp extends React.Component {
     constructor(props){
         super(props);
     }
+    leave(){
+        console.info('leave home.');
+        return false;
+    }
     render(){
         return (
             <Router>
                 <div className="router-container">
-                    <Route exact path="/" component={Home} />
+                    <Route exact path="/" component={Home} onLeave={this.leave} />
                     <Route path="/main" component={Main} />
                 </div>
             </Router>

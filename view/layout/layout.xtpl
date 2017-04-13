@@ -19,7 +19,7 @@
         QNR.Flexible=f;})();
     </script>
     -->
-    <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/bulma/0.4.0/css/bulma.min.css">
+    <link href="https://cdn.bootcss.com/bulma/0.4.0/css/bulma.min.css" rel="stylesheet">
     {{{block ("style")}}}
 </head>
 <body>

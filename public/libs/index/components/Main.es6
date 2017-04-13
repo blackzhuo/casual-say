@@ -9,12 +9,20 @@ class MainApp extends React.Component {
 		super(props);
 	}
 	componentDidMount() {
-		this.SOCKET = io('http://23.106.136.124:3000',{'force new connection': true});
-		
+		this.SOCKET = io('http://23.106.136.124:3000', { 'force new connection': true });
+		// this.SOCKET = io('http://127.0.0.1:3000', { 'force new connection': true });
+
 		let { userName, theme, headImg } = this.props;
 		let content = document.getElementById('postContent');
 		let contentHeight = content.offsetHeight;
 		content.style.height = contentHeight + 'px';
+
+		this.SOCKET.on('chat initial', function (data) {
+			data.forEach((item, index) => {
+				this.props.send(item);
+			});
+			content.scrollTop = Number.MAX_SAFE_INTEGER;
+		}.bind(this));
 
 		this.SOCKET.on('chat message', function (data) {
 			this.props.send({
@@ -28,27 +36,16 @@ class MainApp extends React.Component {
 			content.scrollTop = Number.MAX_SAFE_INTEGER;
 		}.bind(this));
 
-		this.SOCKET.on('chat check', function () {
-			this.SOCKET.emit('chat check', userName, 1);
-		}.bind(this));
-
-		// 发一个 chat check
-		this.SOCKET.emit('chat check', userName, 0);
-		
-		sendMsg(this.SOCKET, {
-			sort: 1,
-			name: userName,
-			msg: 'join in.',
-			theme: theme,
-			headImg: headImg
-		});
+		this.SOCKET.emit('chat login', { id: +new Date() + Math.random() * 1000, userName: userName });
 	}
-	componentWillUnmount(){
+	componentWillUnmount() {
 		this.SOCKET.emit('chat clear');
 		this.SOCKET = null;
 		location.href = '/';
 	}
-	sendHandler() {
+	sendHandler(e) {
+		e.preventDefault();
+		e.stopPropagation();
 		let msg = this.refs.inputMessage.value;
 		let { userName, theme, headImg } = this.props;
 		sendMsg(this.SOCKET, {
@@ -59,6 +56,7 @@ class MainApp extends React.Component {
 			headImg: headImg
 		});
 		this.refs.inputMessage.value = '';
+		return false;
 	}
 	render() {
 		const { userName, chatMessage, send } = this.props;
@@ -102,7 +100,9 @@ class MainApp extends React.Component {
 				</div>
 				<div className="columns is-mobile opt">
 					<div className="column">
-						<input ref="inputMessage" className="input" placeholder="Type here..."></input>
+						<form onSubmit={this.sendHandler}>
+							<input type="search" ref="inputMessage" className="input" placeholder="Type here..."></input>
+						</form>
 					</div>
 					<div className="column is-one-quarter">
 						<button className="button is-primary" onClick={this.sendHandler}>Send</button>

@@ -62,8 +62,9 @@ body {
                     -webkit-flex: 1;
                     flex: 1;
                     margin: 30px;
+                    color: #000;
                 }
-                .username {
+                form {
                     position: relative;
                     font-size: 20px;
                     -webkit-box-flex: 1;
@@ -72,11 +73,19 @@ body {
                     width: 300px;
                     left: 50%;
                     margin-left: -150px;
-                    background-color: transparent;
-                    border: none;
-                    border-bottom: 1px solid #cacaca;
-                    outline: none;
-                    text-align: center;
+                    .username {
+                        font-size: 20px;
+                        width: 300px;
+                        left: 0;
+                        background-color: transparent;
+                        border: none;
+                        border-bottom: 1px solid #cacaca;
+                        outline: none;
+                        text-align: center;
+                        &-warn{
+                            border-bottom: 1px solid #f00;
+                        }
+                    }
                 }
                 .login {
                     font-size: 20px;
@@ -178,10 +187,6 @@ body {
                 .opt {
                     height: 50px;
                     margin: 0 0 10px 0;
-                    .input-messag {
-                    }
-                    .message-send {
-                    }
                 }
             }
             .loading {
