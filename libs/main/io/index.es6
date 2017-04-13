@@ -24,7 +24,7 @@ module.exports.index = function (io) {
             data.socket = socket;
             loginUser.push(data);
             
-            io.emit('chat initial', totalMessage);
+            socket.emit('chat initial', totalMessage);
             io.emit('chat message', {
                 sort: 1,
                 name: data.userName,
