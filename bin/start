@@ -1,2 +1,4 @@
 #!/bin/sh
-pm2 start ../libs/app.es6
+git pull
+pm2 stop /home/q/www/casual-say/libs/app.es6
+pm2 start /home/q/www/casual-say/libs/app.es6

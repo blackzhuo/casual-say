@@ -1,2 +1,2 @@
 #!/bin/sh
-node ../libs/app.es6
+node /home/q/www/casual-say/libs/app.es6
