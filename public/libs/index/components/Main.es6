@@ -11,7 +11,7 @@ class MainApp extends React.Component {
 	scrollBottom(){
 		let content = this.refs.postContent;
 		setTimeout(() => {
-			content.scrollTop = Number.MAX_SAFE_INTEGER;
+			content.scrollTop = 9999999999;
 		}, 200);
 	}
 	componentDidMount() {
