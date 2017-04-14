@@ -8,35 +8,61 @@ class MainApp extends React.Component {
 	constructor(props) {
 		super(props);
 	}
+	scrollBottom(){
+		let content = this.refs.postContent;
+		setTimeout(() => {
+			content.scrollTop = Number.MAX_SAFE_INTEGER;
+		}, 200);
+	}
 	componentDidMount() {
 		this.SOCKET = io('http://23.106.136.124:3000', { 'force new connection': true });
 		// this.SOCKET = io('http://127.0.0.1:3000', { 'force new connection': true });
 
 		let { userName, theme, headImg } = this.props;
-		let content = document.getElementById('postContent');
-		let contentHeight = content.offsetHeight;
-		content.style.height = contentHeight + 'px';
+		let content = this.refs.postContent;
+		content.style.height = content.offsetHeight + 'px';
 
-		this.SOCKET.on('chat initial', function (data) {
-			data.forEach((item, index) => {
-				this.props.send(item);
-			});
-			content.scrollTop = Number.MAX_SAFE_INTEGER;
-		}.bind(this));
+		this.SOCKET.on('chat initial', (data) => {
+			this.props.send(data);
+			this.scrollBottom();
+		});
 
-		this.SOCKET.on('chat message', function (data) {
-			this.props.send({
+		this.SOCKET.on('chat message', (data) => {
+			this.props.send([{
 				sort: data.sort,
 				name: data.name,
 				msg: data.msg,
 				theme: data.theme,
 				headImg: data.headImg,
 				date: data.date
-			});
-			content.scrollTop = Number.MAX_SAFE_INTEGER;
-		}.bind(this));
+			}]);
+			this.scrollBottom();
+		});
 
 		this.SOCKET.emit('chat login', { id: +new Date() + Math.random() * 1000, userName: userName });
+	}
+	// TODO 消息内容滚动使用 iscroll
+	componentDidUpdate() {
+		// let content = this.refs.postContent;
+		// if (!this.myScroll && content) {
+		// 	this.myScroll = new IScroll(content, {
+		// 		freeScroll: true,
+	    //         eventPassthrough: true,
+	    //         bounceLock : true ,
+	    //         hScrollbar : false ,
+	    //         vScroll : false ,
+	    //         scrollX: false,
+	    //         scrollY: true,
+	    //         probeType: 3,
+	    //         preventDefault: false,
+		// 		disablePointer: true
+		// 	});
+		// } else {
+		// 	this.myScroll.refresh();
+		// }
+		// this.myScroll.on("beforeScrollStart",function(){
+        //     this.refresh();
+        // });
 	}
 	componentWillUnmount() {
 		this.SOCKET.emit('chat clear');
@@ -59,7 +85,7 @@ class MainApp extends React.Component {
 		return false;
 	}
 	render() {
-		const { userName, chatMessage, send } = this.props;
+		const { userName, chatMessage } = this.props;
 		let messageBody = [];
 		chatMessage.forEach((item, index) => {
 			let liItem = null;
@@ -91,8 +117,8 @@ class MainApp extends React.Component {
 		});
 		return (
 			<div className="chat">
-				<div id="postContent" className="area">
-					<div className="post">
+				<div ref="postContent" className="area">
+					<div ref="scrollItem" className="post">
 						<ul className="messages">
 							{messageBody}
 						</ul>

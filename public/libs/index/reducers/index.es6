@@ -8,7 +8,7 @@ export default function chatMessage(state = {
   switch (action.type) {
     case CHATMESSAGE:
       return Object.assign({}, state, {
-        chatMessage: [...state.chatMessage, action.data]
+        chatMessage: [...state.chatMessage, ...action.data]
       });
       break;
     case USERNAME:

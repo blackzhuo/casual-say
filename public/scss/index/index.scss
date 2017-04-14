@@ -16,6 +16,7 @@ body {
     }
 }
 .pages {
+    -webkit-overflow-scrolling: touch;
     display: -webkit-box;
     display: -webkit-flex;
     display: flex;
@@ -25,12 +26,20 @@ body {
         -webkit-box-flex: 0 0 auto;
         -webkit-flex: 0 0 auto;
         flex: 0 0 auto;
+        height: 50px;
+        .hero-body{
+            padding: 0.5rem 1.5rem;
+            .title{
+                font-size: 25px;
+            }
+        }
     }
     .footer {
         -webkit-box-flex: 0 0 auto;
         -webkit-flex: 0 0 auto;
         flex: 0 0 auto;
-        padding: 1rem 1.5rem;
+        padding: 0.8rem 1.5rem;
+        height: 50px;
     }
     .main {
         -webkit-box-flex: 1 0 auto;
@@ -56,6 +65,7 @@ body {
                 flex-direction: column;
                 justify-content: center;
                 text-align: center;
+                margin: 100px 0 0 0;
                 .des {
                     font-size: 20px;
                     -webkit-box-flex: 1;
@@ -109,7 +119,6 @@ body {
                     flex: 1 0 auto;
                     overflow: auto;
                     .post {
-                        height: 100%;
                         .messages {
                             margin: 0;
                             overflow-y: scroll;
