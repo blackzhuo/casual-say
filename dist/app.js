@@ -19,7 +19,7 @@ var hashPath = path.resolve(__dirname, '..', 'hash/assets.json');
 var assetsJson = staticHash.readSync(hashPath);
 global.assetsJson = config.assetsJson = JSON.parse(assetsJson);
 
-app.use(regeneratorRuntime.mark(function _callee(next) {
+app.use( /*#__PURE__*/regeneratorRuntime.mark(function _callee(next) {
     return regeneratorRuntime.wrap(function _callee$(_context) {
         while (1) {
             switch (_context.prev = _context.next) {

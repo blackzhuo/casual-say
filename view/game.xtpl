@@ -1,0 +1,14 @@
+{{extend ("./layout/layout")}}
+
+{{#block ("style")}}
+    <link rel="stylesheet" type="text/css" href="{{hash.css}}">
+{{/block}}
+
+{{#block ("body")}}
+	
+{{/block}}
+
+{{#block ("script")}}
+	<script type="text/javascript" src="/common/phaser.min.js"></script>
+	<script src="{{hash.js}}"></script>
+{{/block}}

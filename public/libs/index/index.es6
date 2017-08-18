@@ -13,6 +13,8 @@ const totalReducer = combineReducers({
 
 const store = createStore(totalReducer);
 
+require('../game/index.es6');
+
 render(
   <Provider store={store}>
     <App />

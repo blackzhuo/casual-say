@@ -1,7 +1,7 @@
 'use strict';
 
 module.exports = {
-    index: regeneratorRuntime.mark(function index() {
+    index: /*#__PURE__*/regeneratorRuntime.mark(function index() {
         return regeneratorRuntime.wrap(function index$(_context) {
             while (1) {
                 switch (_context.prev = _context.next) {
@@ -17,18 +17,34 @@ module.exports = {
             }
         }, index, this);
     }),
-    main: regeneratorRuntime.mark(function main() {
-        return regeneratorRuntime.wrap(function main$(_context2) {
+    game: /*#__PURE__*/regeneratorRuntime.mark(function game() {
+        return regeneratorRuntime.wrap(function game$(_context2) {
             while (1) {
                 switch (_context2.prev = _context2.next) {
                     case 0:
-                        console.log('render notfound');
+                        console.log('render game');
                         _context2.next = 3;
-                        return this.render('notfound', { "title": "casual-say", "hash": global.assetsJson.notfound });
+                        return this.render('game', { "title": "game", "hash": global.assetsJson.game });
 
                     case 3:
                     case 'end':
                         return _context2.stop();
+                }
+            }
+        }, game, this);
+    }),
+    main: /*#__PURE__*/regeneratorRuntime.mark(function main() {
+        return regeneratorRuntime.wrap(function main$(_context3) {
+            while (1) {
+                switch (_context3.prev = _context3.next) {
+                    case 0:
+                        console.log('render notfound');
+                        _context3.next = 3;
+                        return this.render('notfound', { "title": "casual-say", "hash": global.assetsJson.notfound });
+
+                    case 3:
+                    case 'end':
+                        return _context3.stop();
                 }
             }
         }, main, this);
